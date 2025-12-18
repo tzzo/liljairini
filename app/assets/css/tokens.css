@@ -1,0 +1,42 @@
+:root {
+  /* Colors - Cobalt Blue & Gold palette */
+  --color-bg: #1a4fba;
+  --color-bg-dark: #0f3d8c;
+  --color-bg-light: #2563eb;
+  --color-text: #E9EEFF;
+  --color-text-muted: #b8c4e8;
+  --color-accent: #c9914e;
+  --color-accent-light: #e8b574;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-smooth: 300ms ease-out;
+  --transition-slow: 500ms ease-out;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 80px;
+}
