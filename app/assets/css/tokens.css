@@ -40,3 +40,13 @@
   --max-width: 1200px;
   --nav-height: 80px;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --nav-height: 60px;
+  }
+}

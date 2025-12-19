@@ -1,50 +1,45 @@
 <script setup lang="ts">
+const { t } = useI18n()
+const localePath = useLocalePath()
 const route = useRoute()
 
-const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/media', label: 'Media' },
-  { to: '/contact', label: 'Contact' }
-]
+const navLinks = computed(() => [
+  { to: localePath('/contact'), label: t('nav.contact') }
+])
 
-const isMenuOpen = ref(false)
+const switchLocalePath = useSwitchLocalePath()
+const { locale, locales } = useI18n()
 
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-
-const closeMenu = () => {
-  isMenuOpen.value = false
-}
+const availableLocales = computed(() =>
+  locales.value.filter((l) => typeof l !== 'string' && l.code !== locale.value)
+)
 </script>
 
 <template>
   <nav class="nav">
     <div class="nav-container">
-      <NuxtLink to="/" class="nav-logo" @click="closeMenu">
+      <NuxtLink :to="localePath('/')" class="nav-logo">
         <IriniLogo :width="120" :height="45" />
       </NuxtLink>
 
-      <button
-        class="nav-toggle"
-        :aria-expanded="isMenuOpen"
-        aria-label="Toggle navigation"
-        @click="toggleMenu"
-      >
-        <span class="nav-toggle-bar" />
-        <span class="nav-toggle-bar" />
-        <span class="nav-toggle-bar" />
-      </button>
-
-      <ul class="nav-links" :class="{ 'is-open': isMenuOpen }">
+      <ul class="nav-links">
         <li v-for="link in navLinks" :key="link.to">
           <NuxtLink
             :to="link.to"
             class="nav-link"
             :class="{ 'is-active': route.path === link.to }"
-            @click="closeMenu"
           >
             {{ link.label }}
+          </NuxtLink>
+        </li>
+        <li class="nav-lang-switcher">
+          <NuxtLink
+            v-for="loc in availableLocales"
+            :key="loc.code"
+            :to="switchLocalePath(loc.code)"
+            class="nav-link nav-lang"
+          >
+            {{ loc.name }}
           </NuxtLink>
         </li>
       </ul>
@@ -79,32 +74,19 @@ const closeMenu = () => {
   align-items: center;
   color: var(--color-text);
   transition: opacity var(--transition-fast);
+  width: 80px;
+  @media (min-width: 768px) {
+    width: 120px;
+  }
 }
 
 .nav-logo:hover {
   opacity: 0.8;
 }
 
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: var(--space-xs);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.nav-toggle-bar {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-text);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-
 .nav-links {
   display: flex;
+  align-items: center;
   gap: var(--space-lg);
   list-style: none;
 }
@@ -126,32 +108,29 @@ const closeMenu = () => {
   border-bottom: 1px solid var(--color-accent);
 }
 
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: flex;
-  }
+.nav-lang-switcher {
+  margin-left: var(--space-sm);
+  padding-left: var(--space-md);
+  border-left: 1px solid rgba(233, 238, 255, 0.2);
+}
 
+.nav-lang {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
   .nav-links {
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-lg);
-    background: rgba(15, 61, 140, 0.98);
-    transform: translateX(100%);
-    transition: transform var(--transition-smooth);
-  }
-
-  .nav-links.is-open {
-    transform: translateX(0);
+    gap: var(--space-md);
   }
 
   .nav-link {
-    font-size: var(--text-2xl);
+    font-size: var(--text-base);
+  }
+
+  .nav-lang-switcher {
+    margin-left: var(--space-xs);
+    padding-left: var(--space-sm);
   }
 }
 </style>

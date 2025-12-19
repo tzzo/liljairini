@@ -1,0 +1,41 @@
+{
+  "seo": {
+    "title": "Irini",
+    "description": "Irini on suomalais-kreikkalainen laulaja-lauluntekijä, jonka runoudesta ja merestä inspiroituneessa musiikissa yhdistyy ajaton sävelkieli ja elektroniset sävyt.",
+    "home": {
+      "title": "Irini",
+      "description": "Irini on suomalais-kreikkalainen laulaja-lauluntekijä, jonka runoudesta ja merestä inspiroituneessa musiikissa yhdistyy ajaton sävelkieli ja elektroniset sävyt."
+    },
+    "contact": {
+      "title": "Yhteystiedot | Irini",
+      "description": "Irini on suomalais-kreikkalainen laulaja-lauluntekijä, jonka runoudesta ja merestä inspiroituneessa musiikissa yhdistyy ajaton sävelkieli ja elektroniset sävyt."
+    }
+  },
+  "nav": {
+    "home": "Etusivu",
+    "media": "Media",
+    "contact": "Yhteystiedot",
+    "toggleNav": "Vaihda navigaatio"
+  },
+  "home": {
+    "tagline": "Musiikkiartisti",
+    "aboutTitle": "Tietoa",
+    "aboutText": "Irini on suomalais-kreikkalainen laulaja-lauluntekijä, jonka runoudesta ja merestä inspiroituneessa musiikissa yhdistyy ajaton sävelkieli ja elektroniset sävyt.",
+    "listenNow": "Kuuntele nyt"
+  },
+  "media": {
+    "title": "Media",
+    "subtitle": "Musiikki & Videot",
+    "musicTitle": "Musiikki",
+    "musicDescription": "Kuuntele Spotifyssa",
+    "videosTitle": "Videot",
+    "videosDescription": "Katso YouTubessa"
+  },
+  "contact": {
+    "title": "Yhteystiedot",
+    "subtitle": "Ota yhteyttä"
+  },
+  "footer": {
+    "allRightsReserved": "Kaikki oikeudet pidätetään."
+  }
+}

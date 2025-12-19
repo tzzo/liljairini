@@ -1,0 +1,48 @@
+{
+  "seo": {
+    "title": "Irini | Official Website",
+    "description": "Official website of Irini - Music artist",
+    "home": {
+      "title": "Irini | Official Website",
+      "description": "Welcome to the official website of Irini - Music artist"
+    },
+    "media": {
+      "title": "Media | Irini",
+      "description": "Listen to music and watch videos from Irini"
+    },
+    "contact": {
+      "title": "Contact | Irini",
+      "description": "Get in touch with Irini - Booking and inquiries"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "media": "Media",
+    "contact": "Contact",
+    "toggleNav": "Toggle navigation"
+  },
+  "home": {
+    "tagline": "Music Artist",
+    "enableMotion": "Enable Motion Effect",
+    "aboutTitle": "About",
+    "aboutText": "Irini is a Finnish music artist known for her unique blend of electronic and pop music. With a distinctive voice and innovative sound design, she creates atmospheric soundscapes that transport listeners to new emotional territories.",
+    "listenNow": "Listen Now"
+  },
+  "media": {
+    "title": "Media",
+    "subtitle": "Music & Videos",
+    "musicTitle": "Music",
+    "musicDescription": "Stream on Spotify",
+    "videosTitle": "Videos",
+    "videosDescription": "Watch on YouTube"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in Touch",
+    "bookingTitle": "Booking & Inquiries",
+    "followTitle": "Follow"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved."
+  }
+}

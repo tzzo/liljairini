@@ -1,7 +1,9 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Contact | Irini',
-  description: 'Get in touch with Irini - Booking and inquiries'
+  title: () => t('seo.contact.title'),
+  description: () => t('seo.contact.description')
 })
 
 const socialLinks = [
@@ -32,13 +34,11 @@ const socialLinks = [
   <div class="contact">
     <div class="container">
       <header class="contact-header">
-        <h1 class="contact-title">Contact</h1>
-        <p class="contact-subtitle">Get in Touch</p>
+        <h1 class="contact-title">{{ t('contact.title') }}</h1>
       </header>
 
       <!-- Email Section -->
       <section class="contact-section">
-        <h2 class="section-title">Booking & Inquiries</h2>
         <a href="mailto:irinimusiikki@gmail.com" class="email-link">
           irinimusiikki@gmail.com
         </a>
@@ -46,7 +46,6 @@ const socialLinks = [
 
       <!-- Social Links Section -->
       <section class="contact-section">
-        <h2 class="section-title">Follow</h2>
         <ul class="social-list">
           <li v-for="link in socialLinks" :key="link.url" class="social-item">
             <a
@@ -83,25 +82,14 @@ const socialLinks = [
   margin-bottom: var(--space-xs);
 }
 
-.contact-subtitle {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-style: italic;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
 .contact-section {
   margin-bottom: var(--space-xl);
   text-align: center;
 }
 
 .section-title {
-  font-size: var(--text-xl);
   color: var(--color-accent-light);
   margin-bottom: var(--space-md);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .email-link {

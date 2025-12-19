@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const socialLinks = [
   {
     href: 'https://www.instagram.com/liljairini/',
@@ -43,7 +45,7 @@ const currentYear = new Date().getFullYear()
       </div>
 
       <p class="footer-copyright">
-        &copy; {{ currentYear }} Irini. All rights reserved.
+        &copy; {{ currentYear }} Irini. {{ t('footer.allRightsReserved') }}
       </p>
     </div>
   </footer>
@@ -71,7 +73,6 @@ const currentYear = new Date().getFullYear()
 
 .footer-social-link {
   font-family: var(--font-display);
-  font-size: var(--text-sm);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
