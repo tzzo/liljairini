@@ -21,9 +21,10 @@ export default defineNuxtConfig({
     }
   },
 
-  // Enable SSR and prerendering for static site
+  // Full static site generation
   ssr: true,
   nitro: {
+    preset: 'static',
     prerender: {
       routes: ['/', '/contact', '/en', '/en/contact']
     }
