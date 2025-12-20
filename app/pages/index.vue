@@ -1,76 +1,6 @@
 <script setup lang="ts">
-import Parallax from 'parallax-js'
-
 const { t } = useI18n()
-
-const parallaxScene = ref<HTMLElement | null>(null)
-let parallaxInstance: Parallax | null = null
-
-const needsMotionPermission = ref(false)
-const motionEnabled = ref(false)
-
-const initParallax = () => {
-  if (parallaxScene.value && !parallaxInstance) {
-    parallaxInstance = new Parallax(parallaxScene.value, {
-      relativeInput: true,
-      hoverOnly: false,
-      calibrateX: true,
-      calibrateY: true,
-      invertX: false,
-      invertY: false,
-      limitX: 15,
-      limitY: 15,
-      scalarX: 4,
-      scalarY: 4,
-      frictionX: 0.1,
-      frictionY: 0.1
-    })
-  }
-}
-
-const requestMotionPermission = async () => {
-  const DeviceOrientationEventWithPermission = DeviceOrientationEvent as typeof DeviceOrientationEvent & {
-    requestPermission?: () => Promise<'granted' | 'denied'>
-  }
-
-  if (typeof DeviceOrientationEventWithPermission.requestPermission === 'function') {
-    try {
-      const permission = await DeviceOrientationEventWithPermission.requestPermission()
-      if (permission === 'granted') {
-        motionEnabled.value = true
-        needsMotionPermission.value = false
-        // Reinitialize parallax after permission granted
-        if (parallaxInstance) {
-          parallaxInstance.destroy()
-          parallaxInstance = null
-        }
-        initParallax()
-      }
-    } catch (error) {
-      console.error('Motion permission denied:', error)
-    }
-  }
-}
-
-onMounted(() => {
-  // Check if iOS and needs permission
-  const DeviceOrientationEventWithPermission = DeviceOrientationEvent as typeof DeviceOrientationEvent & {
-    requestPermission?: () => Promise<'granted' | 'denied'>
-  }
-
-  if (typeof DeviceOrientationEventWithPermission.requestPermission === 'function') {
-    needsMotionPermission.value = true
-  } else {
-    motionEnabled.value = true
-  }
-
-  initParallax()
-})
-
-onUnmounted(() => {
-  parallaxInstance?.destroy()
-  parallaxInstance = null
-})
+const { transform, requestPermission } = useParallaxEffect({ intensity: 15 })
 
 useSeoMeta({
   title: () => t('seo.home.title'),
@@ -81,9 +11,9 @@ useSeoMeta({
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="hero">
-      <div ref="parallaxScene" class="hero-image-wrapper">
-        <div data-depth="0.2" class="hero-image-layer">
+    <section class="hero" @click="requestPermission">
+      <div class="hero-image-wrapper">
+        <div class="hero-image-layer" :style="{ transform }">
           <img
             src="/irini.png"
             alt="Irini"
@@ -93,7 +23,7 @@ useSeoMeta({
       </div>
 
       <div class="hero-overlay">
-        <IriniLogo :width="280" :height="105" class="hero-logo" />
+        <IriniLogo :width="280" :height="105" class="hero-logo" animated />
         <p class="hero-tagline">{{ t('home.tagline') }}</p>
       </div>
 
@@ -193,43 +123,6 @@ useSeoMeta({
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.motion-permission-btn {
-  position: absolute;
-  bottom: calc(var(--space-lg) + 80px);
-  left: 50%;
-  transform: translateX(-50%);
-  padding: var(--space-sm) var(--space-md);
-  background: rgba(201, 145, 78, 0.2);
-  border: 1px solid var(--color-accent);
-  border-radius: 8px;
-  color: var(--color-text);
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background var(--transition-fast), transform var(--transition-fast);
-  z-index: 10;
-}
-
-.motion-permission-btn:hover {
-  background: rgba(201, 145, 78, 0.4);
-}
-
-.motion-permission-btn:active {
-  transform: translateX(-50%) scale(0.98);
-}
-
-@keyframes scroll-pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scaleY(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scaleY(1.2);
-  }
-}
 
 /* Bio Section */
 .bio {
@@ -280,7 +173,7 @@ useSeoMeta({
 
   .bio-title,
   .featured-title {
-    font-size: var(--text-2xl);
+    font-size: var(--text-5xl);
   }
 
   .featured-grid {
