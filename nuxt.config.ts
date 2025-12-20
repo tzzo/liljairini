@@ -49,7 +49,9 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Irini | Official Website' },
         { property: 'og:description', content: 'Official website of Irini - Music artist' },
         { property: 'og:image', content: '/irini.png' },
-        { property: 'og:type', content: 'website' }
+        { property: 'og:type', content: 'website' },
+        { name: 'theme-color', content: '#1a237e' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
