@@ -24,7 +24,7 @@ useSeoMeta({
 
       <div class="hero-overlay">
         <IriniLogo :width="280" :height="105" class="hero-logo" animated />
-        <p class="hero-tagline">{{ t('home.tagline') }}</p>
+        <!--<p class="hero-tagline">{{ t('home.tagline') }}</p>-->
       </div>
 
     </section>
@@ -66,7 +66,7 @@ useSeoMeta({
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
-  max-width: 1400px;
+  max-width: 800px;
   overflow: hidden;
   margin: 0 auto;
 }
@@ -167,7 +167,6 @@ useSeoMeta({
 /* Responsive */
 @media (max-width: 768px) {
   .hero-logo {
-    width: 200px;
     height: auto;
   }
 

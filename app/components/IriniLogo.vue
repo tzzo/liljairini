@@ -60,27 +60,27 @@ defineProps<{
   fill-opacity: 0;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: draw 2s ease forwards, fill 0.5s ease forwards 1.8s;
+  animation: draw 3s ease forwards, fill 0.75s ease forwards 2.1s;
 }
 
 .logo-animated .logo-path-1 {
-  animation-delay: 0.8s, 2.6s;
+  animation-delay: 1.2s, 3.3s;
 }
 
 .logo-animated .logo-path-2 {
-  animation-delay: 0.6s, 2.4s;
+  animation-delay: 0.9s, 3s;
 }
 
 .logo-animated .logo-path-3 {
-  animation-delay: 0.4s, 2.2s;
+  animation-delay: 0.6s, 2.7s;
 }
 
 .logo-animated .logo-path-4 {
-  animation-delay: 0.2s, 2s;
+  animation-delay: 0.3s, 2.4s;
 }
 
 .logo-animated .logo-path-5 {
-  animation-delay: 0s, 1.8s;
+  animation-delay: 0s, 2.1s;
 }
 
 @keyframes draw {
